@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.appcel</groupId>
+		<artifactId>appcel-master</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../appcel-master</relativePath>
+	</parent>
+
+	<artifactId>appcel-facade-converter</artifactId>
+	<version>${appcel-facade-converter.version}</version>
+	<packaging>jar</packaging>
+
+	<name>appcel-facade-converter</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<log4j.level>debug</log4j.level>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.pointdew</groupId>
+			<artifactId>pointdew-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.appcel</groupId>
+			<artifactId>appcel-kernel-mybatis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

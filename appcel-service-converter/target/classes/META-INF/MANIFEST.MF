@@ -1,0 +1,45 @@
+Manifest-Version: 1.0
+Built-By: Administrator
+Build-Jdk: 1.6.0_13
+Class-Path: . lib/pointdew-common-1.0.0-SNAPSHOT.jar lib/ant-1.9.3.jar
+  lib/ant-launcher-1.9.3.jar lib/jdom-2.0.2.jar lib/jakarta-oro-1.1.ja
+ r lib/commons-lang-2.6.jar lib/chardet-1.0.jar lib/appcel-common-1.0.
+ 0-SNAPSHOT.jar lib/poi-3.9.jar lib/poi-ooxml-3.9.jar lib/poi-ooxml-sc
+ hemas-3.9.jar lib/xmlbeans-2.3.0.jar lib/stax-api-1.0.1.jar lib/poi-s
+ cratchpad-3.9.jar lib/poi-contrib-3.6.jar lib/commons-httpclient-3.1.
+ jar lib/velocity-1.7.jar lib/mail-1.4.7.jar lib/activation-1.1.jar li
+ b/pdfbox-0.7.3.jar lib/fontbox-0.1.0.jar lib/jempbox-0.2.0.jar lib/bc
+ mail-jdk14-136.jar lib/bcprov-jdk14-136.jar lib/htmlparser-1.6.jar li
+ b/kaptcha-2.3.2.jar lib/edtFTPj-2.4.0.jar lib/pointdew-license-1.0.0-
+ SNAPSHOT.jar lib/appcel-kernel-mybatis-1.0.0-SNAPSHOT.jar lib/spring-
+ jdbc-4.2.5.RELEASE.jar lib/appcel-config-1.0.0-SNAPSHOT.jar lib/appce
+ l-facade-converter-1.0.0-SNAPSHOT.jar lib/mysql-connector-java-5.1.30
+ .jar lib/mybatis-3.3.1.jar lib/mybatis-spring-1.2.5.jar lib/itext-4.2
+ .1.jar lib/bctsp-jdk14-1.38.jar lib/bcprov-jdk14-1.38.jar lib/bcmail-
+ jdk14-1.38.jar lib/jfreechart-1.0.12.jar lib/jcommon-1.0.15.jar lib/p
+ df-renderer-1.0.5.jar lib/itextasian-1.0.jar lib/groovy-all-2.0.1.jar
+  lib/backport-util-concurrent-3.1.jar lib/icepdf-core-4.3.2.jar lib/j
+ odconverter-3.0-beta-4.jar lib/juh-3.2.1.jar lib/jurt-3.2.1.jar lib/r
+ idl-3.2.1.jar lib/unoil-3.2.1.jar lib/antlr-2.7.7.jar lib/aopalliance
+ -1.0.jar lib/aspectjweaver-1.7.4.jar lib/aspectjrt-1.7.4.jar lib/cgli
+ b-3.2.2.jar lib/asm-5.0.4.jar lib/json-lib-2.4-jdk15.jar lib/ognl-3.1
+ .4.jar lib/javassist-3.20.0-GA.jar lib/oro-2.0.8.jar lib/commons-bean
+ utils-1.9.1.jar lib/commons-codec-1.10.jar lib/commons-collections-3.
+ 2.1.jar lib/commons-digester-2.1.jar lib/commons-fileupload-1.3.1.jar
+  lib/commons-io-2.4.jar lib/commons-lang3-3.4.jar lib/commons-logging
+ -1.1.1.jar lib/commons-validator-1.5.1.jar lib/dom4j-1.6.1.jar lib/xm
+ l-apis-1.0.b2.jar lib/ezmorph-1.0.6.jar lib/javassist-3.12.1.GA.jar l
+ ib/log4j-1.2.17.jar lib/slf4j-api-1.7.5.jar lib/slf4j-log4j12-1.7.5.j
+ ar lib/fastjson-1.2.6.jar lib/spring-aop-4.2.5.RELEASE.jar lib/spring
+ -aspects-4.2.5.RELEASE.jar lib/spring-beans-4.2.5.RELEASE.jar lib/spr
+ ing-context-4.2.5.RELEASE.jar lib/spring-expression-4.2.5.RELEASE.jar
+  lib/spring-context-support-4.2.5.RELEASE.jar lib/spring-core-4.2.5.R
+ ELEASE.jar lib/spring-jms-4.2.5.RELEASE.jar lib/spring-messaging-4.2.
+ 5.RELEASE.jar lib/spring-orm-4.2.5.RELEASE.jar lib/spring-oxm-4.2.5.R
+ ELEASE.jar lib/spring-tx-4.2.5.RELEASE.jar lib/druid-1.0.18.jar lib/d
+ ubbo-2.5.3.jar lib/netty-3.2.5.Final.jar lib/zookeeper-3.4.5.jar lib/
+ jline-0.9.94.jar lib/zkclient-0.3.jar lib/fastDFS-client-1.24.jar lib
+ /quartz-2.2.3.jar lib/c3p0-0.9.1.2.jar lib/quartz-jobs-2.2.3.jar
+Main-Class: com.alibaba.dubbo.container.Main
+Created-By: Maven Integration for Eclipse
+

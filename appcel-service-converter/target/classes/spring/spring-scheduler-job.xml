@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans.xsd  
+           http://www.springframework.org/schema/aop   
+           http://www.springframework.org/schema/aop/spring-aop.xsd  
+           http://www.springframework.org/schema/tx  
+           http://www.springframework.org/schema/tx/spring-tx.xsd  
+           http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	
+	
+	<!-- 调用需要处理的业务工作任务类配置，需要根据业务具体实现  -->
+	<!-- 文档转换业务调度工作任务器  -->
+	<bean id="convertJob" class="com.appcel.core.converter.job.ConverterOffice2PDF2SWFJob" />
+	
+	<!-- 定义调用对象和调用对象的方法 -->
+	<bean id="convertJobtask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject" ref="convertJob" />
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod" value="doConvert" />
+		<!-- concurrent属性默认值为true，即作业可并发调度，可以将其设置为false如果不允许作业被并发调度 -->
+		<property name="concurrent" value="false" />
+	</bean>
+	<!-- cron表达式定义触发时间 -->
+	<bean id="doConvertCron" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="convertJobtask" />
+		<!-- 0 0 5 * * ? 每天5点执行 -->
+		<!-- 0/9 * * * * ? 每9秒钟执行一次 -->
+		<property name="cronExpression" value="0/30 * * * * ?" />
+	</bean>
+	
+	<!-- quartz总管类，如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+	<bean id="quartzScheduler" lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<!-- <property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
+		<property name="configLocation" value="classpath:quartz.properties" />
+		<property name="startupDelay" value="30" />
+		<property name="overwriteExistingJobs" value="true" />
+		<property name="quartzProperties">
+			<props>
+				<prop key="org.quartz.jobStore.driverDelegateClass">${quartz.driverDelegateClass}</prop>
+			</props>
+		</property>
+		<property name="jobDetails" >
+            <list></list>	
+        </property> -->	
+		<property name="triggers">
+			<list>
+				<ref bean="doConvertCron" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 
+	cronExpression 表达式样例
+	"0 0 12 * * ?"              每天中午12点触发
+	"0 15 10 ? * *"             每天上午10:15触发
+	"0 15 10 * * ?"             每天上午10:15触发
+	"0 15 10 * * ? *"           每天上午10:15触发
+	"0 15 10 * * ? 2005"        2005年的每天上午10:15触发
+	"0 * 14 * * ?"              在每天下午2点到下午2:59期间的每1分钟触发
+	"0 0/5 14 * * ?"            在每天下午2点到下午2:55期间的每5分钟触发
+	"0 0/5 14,18 * * ?"         在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发
+	"0 0-5 14 * * ?"            在每天下午2点到下午2:05期间的每1分钟触发
+	"0 10,44 14 ? 3 WED"        每年三月的星期三的下午2:10和2:44触发
+	"0 15 10 ? * MON-FRI"       周一至周五的上午10:15触发
+	"0 15 10 15 * ?"            每月15日上午10:15触发
+	"0 15 10 L * ?"             每月最后一日的上午10:15触发
+	"0 15 10 ? * 6L"            每月的最后一个星期五上午10:15触发 
+	"0 15 10 ? * 6L 2006-2020"  2006年至2020年的每月的最后一个星期五上午10:15触发
+	"0 15 10 ? * 6#3"           每月的第三个星期五上午10:15触发	
+	
+	
+	一个任务调度器最基本的三个元素是
+	Job(or Task)：需要定时处理的事情
+	Trigger: 事件触发时间点（一次性的、固定周期性的、像Linux Cron Jobs 灵活配置的）
+	Scheduler: 调度器
+	Spring同时提供对Quartz的TriggerListener和JobListener的支持，这类似AOP编程，可以在任务执行前后进行检查等工作，通过简单的属性配置可实现。
+	 -->
+</beans>

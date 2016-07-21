@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.appcel.core.converter.dao.impl.ConverterInfoDaoImpl">
+
+	<sql id="table"> tb_converter_info </sql>
+
+	<resultMap id="beanMap" type="ConverterInfo">
+		<id column="IDX" property="id" />
+		<result column="KEYX" property="key" />
+		<result column="VERSIONX" property="version" />
+		<result column="FILENAME" property="fileName" />
+		<result column="CONVERTERTYPE" property="converterType" />
+		<result column="SRCFILEPATH" property="srcFilePath" />
+		<result column="DESTFILEPATH" property="destFilePath" />
+		<result column="CAPTUREIMGPATH" property="captureImgPath" />
+		<result column="ENTITYKEY" property="entityKey" />
+		<result column="STATUS" property="status" />
+		<result column="REMARK" property="remark" />
+		<result column="CONVERTERTIME" property="converterTime" />
+		<result column="CREATETIME" property="createTime" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="ConverterInfo" keyProperty="id" useGeneratedKeys="true">
+		insert into
+		<include refid="table" />
+		(KEYX, VERSIONX, FILENAME, CONVERTERTYPE, SRCFILEPATH, DESTFILEPATH,
+		CAPTUREIMGPATH,	ENTITYKEY, STATUS, REMARK, CONVERTERTIME, CREATETIME)
+		values (
+		#{key, jdbcType=VARCHAR},
+		0,
+		#{fileName},
+		#{converterType},
+		#{srcFilePath},
+		#{destFilePath},
+		#{captureImgPath},
+		#{entityKey},
+		#{status},
+		#{remark},
+		#{converterTime,jdbcType=TIMESTAMP},
+		#{createTime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+
+	<!-- 更新version+1 实现乐观锁 -->
+	<update id="update" parameterType="ConverterInfo">
+		update
+		<include refid="table" />
+		<set>
+			VERSIONX = #{version}+1 ,
+			FILENAME = #{fileName},
+			CONVERTERTYPE = #{converterType},
+			SRCFILEPATH = #{srcFilePath},
+			DESTFILEPATH = #{destFilePath},
+			CAPTUREIMGPATH = #{captureImgPath},
+			ENTITYKEY = #{entityKey},
+			STATUS = #{status},
+			REMARK = #{remark},
+			CONVERTERTIME = #{converterTime,jdbcType=TIMESTAMP},
+			CREATETIME = #{createTime,jdbcType=TIMESTAMP}
+		</set>
+		<where>
+			KEYX = #{key} and VERSIONX = #{version}
+		</where>
+	</update>
+	<select id="findByKey" parameterType="String" resultMap="beanMap">
+		select * from
+		<include refid="table" />
+		where KEYX = #{key}
+	</select>
+
+	<select id="listByEntityKey" parameterType="String" resultMap="beanMap">
+		select * from
+		<include refid="table" />
+		where ENTITYKEY = #{entityKey}
+	</select>
+	<select id="listByStatus" parameterType="Integer" resultMap="beanMap">
+		select * from
+		<include refid="table" />
+		where STATUS = #{status}
+	</select>
+	<delete id="deleteByKey" parameterType="String">
+		delete from
+		<include refid="table" />
+		where KEYX = #{key}
+	</delete>
+
+</mapper>
