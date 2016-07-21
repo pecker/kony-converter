@@ -5,6 +5,10 @@
 
 通过 openoffice 4.0.2 + jodconverter-core-3.0-beta-4-dist 将word\powerpoint\excel 转换到pdf
 通过 swftools+xpdf 将pdf转换到swf
+
+fastdfs文件系统存储上传的原视频和转换后的视频文件，一个国内开源的支持分布式部署的文件系统。
+
+
 通过 spring 容器对服务接口进行依赖注入、事务管理
 
 quartz 进行任务调度根据设置的cron trigger触发执行转换服务。Quartz是OpenSymphony开源组织在Job scheduling领域又一个开源项目，它可以与J2EE与J2SE应用程序相结合也可以单独使用。Quartz可以用来创建简单或为运行十个，百个，甚至是好几万个Jobs这样复杂的程序。Jobs可以做成标准的Java组件或 EJBs。
